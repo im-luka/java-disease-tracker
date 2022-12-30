@@ -1,2 +1,1 @@
-# java-disease-tracker
-Desktop app made for tracking disease and viruses.
+# Disease and viruses tracker made with Java & JavaFX
