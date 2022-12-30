@@ -1,0 +1,18 @@
+1
+Kašalj
+Produktivni
+2
+Curenje nosa
+Intenzivno
+3
+Temperatura
+Visoka
+4
+Grlobolja
+Jaka
+5
+Glavobolja
+Produktivni
+6
+Anemičnost
+Intenzivno
