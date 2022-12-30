@@ -1,0 +1,24 @@
+1
+Grad Zagreb
+1000000
+3242
+2
+Zagrebačka
+200000
+1232
+3
+Splitsko-Dalmatinska
+200000
+2324
+4
+Međimurska
+120000
+4323
+5
+Varaždinska
+140000
+3976
+6
+Krk
+42540
+234
