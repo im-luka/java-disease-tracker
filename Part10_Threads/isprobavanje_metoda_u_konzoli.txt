@@ -1,0 +1,81 @@
+        List<Simptom> simptomi = new ArrayList<>();
+        BazaPodataka.dohvatiSimptome(simptomi);
+        for(Simptom s : simptomi) {
+            System.out.println(s.getId() + " " + s.getNaziv() + " " + s.getVrijednost());
+        }
+        System.out.println("-----");
+        Simptom simpt = BazaPodataka.dohvatiOdredeniSimptom(2);
+        System.out.println(simpt.getId() + " " + simpt.getNaziv() + " " + simpt.getVrijednost());
+        Simptom simp = new Simptom((long) 89, "ANEMIJA", "Srednje");
+        BazaPodataka.spremiSimptomUBazu(simp);
+        System.out.println("------");
+        List<Bolest> listaBolesti = new ArrayList<>();
+        List<Virus> listaVirusa = new ArrayList<>();
+        BazaPodataka.dohvatiBolestVirus(listaBolesti, listaVirusa);
+        for (Bolest bol : listaBolesti) {
+            System.out.print(bol.getId() + " " + bol.getNaziv() + " ");
+            for (Simptom simptom : bol.getSimptomi()) {
+                System.out.print(simptom.getNaziv() + ", ");
+            }
+            System.out.println();
+        }
+        System.out.println("\n--UPS--");
+        for (Virus vir : listaVirusa) {
+            System.out.print(vir.getId() + " " + vir.getNaziv() + " ");
+            for (Simptom simptom : vir.getSimptomi()) {
+                System.out.print(simptom.getNaziv() + ", ");
+            }
+            System.out.println();
+        }
+        System.out.println("---");
+        Bolest nekaBol = BazaPodataka.dohvatiOdredenuBolestVirus(1);
+        System.out.print(nekaBol.getId() + " " + nekaBol.getNaziv() + " ");
+        for (Simptom simpa : nekaBol.getSimptomi()) {
+            System.out.print(simpa.getNaziv() + ", ");
+        }
+        System.out.println();
+        System.out.println("----");
+        List<Simptom> nekaj = new ArrayList<>();
+        nekaj.add(PretragaSimptomaController.getObservableListaSimptoma().stream().collect(Collectors.toList()).get(0));
+        nekaj.add(PretragaSimptomaController.getObservableListaSimptoma().stream().collect(Collectors.toList()).get(2));
+        Bolest bolest = new Bolest((long)81, "BOLESTINA", false, nekaj);
+        BazaPodataka.spremiBolestUBazu(bolest, false);
+        System.out.println("-------");
+        List<Zupanija> zupanijaList = new ArrayList<>();
+        BazaPodataka.dohvatiZupanije(zupanijaList);
+        for (Zupanija zup : zupanijaList) {
+            System.out.println(zup.getId() + " " + zup.getNaziv() + " " + zup.getBrojStanovnika() + " " + zup.getBrojZarazenih());
+        }
+        Zupanija zup = BazaPodataka.dohvatiOdredenuZupaniju(3);
+        System.out.println(zup.getId() + " " + zup.getNaziv() + " " + zup.getBrojStanovnika() + " " + zup.getBrojZarazenih());
+        Zupanija zupanija = new Zupanija((long)101, "KRK", 33000, 234);
+        BazaPodataka.spremiZupanijuUBazu(zupanija);
+        System.out.println("----OSOBE----");
+        List<Osoba> osobeLista = new ArrayList<>();
+        BazaPodataka.dohvatiOsobe(osobeLista);
+        for (Osoba os : osobeLista) {
+            System.out.print(os.getId() + " " + os.getIme() + " " + os.getPrezime() + " " + os.getStarost() + " " + os.getZupanija().getNaziv() + " " + os.getZarazenBolescu().getNaziv() + " kontakti: ");
+            if (os.getKontaktiraneOsobe() != null) {
+                for (Osoba kont : os.getKontaktiraneOsobe()) {
+                    System.out.print(kont.getIme() + " " + kont.getPrezime() + ", ");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("Dohvat osobe:");
+        Osoba nekaOsoba = BazaPodataka.dohvatiOdredenuOsobu(3);
+        System.out.print(nekaOsoba.getId() + " " + nekaOsoba.getIme() + " " + nekaOsoba.getPrezime() + " " + nekaOsoba.getStarost() + " " + nekaOsoba.getZupanija().getNaziv() + " " + nekaOsoba.getZarazenBolescu().getNaziv() + " kontakti: ");
+        for (Osoba osoba : nekaOsoba.getKontaktiraneOsobe()) {
+            System.out.print(osoba.getIme() + " " + osoba.getPrezime() + ", ");
+        }
+        System.out.println("\n-----DODAVANJE OSOBE-----");
+        List<Osoba> nekeOsobe = new ArrayList<>();
+        nekeOsobe.add(PretragaOsobaController.getObservableListaOsoba().stream().collect(Collectors.toList()).get(2));
+        nekeOsobe.add(PretragaOsobaController.getObservableListaOsoba().stream().collect(Collectors.toList()).get(4));
+        Osoba dodajOvu = new Osoba.BuilderOsobe((long)101, "Majstor", "Zanata")
+                .osStarost(LocalDate.now())
+                .osZupanija(zupanijaList.get(2))
+                .osZarazenBolescu(listaBolesti.get(1))
+                .osKontaktiraneOsobe(nekeOsobe)
+                .build();
+        BazaPodataka.spremiOsobuUBazu(dodajOvu);

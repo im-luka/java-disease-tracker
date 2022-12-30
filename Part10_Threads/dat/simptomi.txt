@@ -1,0 +1,42 @@
+1
+Kašalj
+Produktivni
+2
+Curenje nosa
+Intenzivno
+3
+Temperatura
+Visoka
+4
+Grlobolja
+Jaka
+5
+Glavobolja
+Produktivni
+6
+Anemičnost
+Intenzivno
+7
+Jos jedan
+Često
+8
+Opet
+Jaka
+9
+a di me nade
+Rijetko
+10
+auhuhu
+Često
+11
+sfdfds
+Rijetko
+12
+qqqqqqqq
+Visoka
+13
+simptomcina
+Produktivni
+14
+kiiiol
+Srednje
